@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Layout, message } from "antd";
+import styled from "styled-components";
+import HeaderMenu from "./header";
+
+const { Header, Sider, Content } = Layout;
+
+const AppContainer = styled.div`
+  .ant-layout {
+    height: 100%;
+    overflow: hidden;
+  }
+  .ant-layout-header {
+    height: 100px;
+    background-color: #301e58;
+    padding: 0px;
+  }
+`;
+// #0A465A
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Suspense fallback={<div>Loading</div>}>
+      APP...
+      <Layout>
+        <AppContainer>
+          <Header>
+            <HeaderMenu></HeaderMenu>
+          </Header>
+          <Layout style={{ backgroundColor: " #0A465A" }}></Layout>
+        </AppContainer>
+      </Layout>
+    </React.Suspense>
   );
 }
 
