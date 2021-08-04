@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, message } from "antd";
 import styled from "styled-components";
 import HeaderMenu from "./header";
+import ContentLayout from "./content";
+import SiderLayout from "./sider";
 
 const { Header, Sider, Content } = Layout;
 
@@ -19,15 +21,19 @@ const AppContainer = styled.div`
 // #0A465A
 
 function App() {
+  const [selectedEquipment, setSelectedEquipment] = useState("");
+
   return (
     <React.Suspense fallback={<div>Loading</div>}>
-      APP...
       <Layout>
         <AppContainer>
           <Header>
             <HeaderMenu></HeaderMenu>
           </Header>
-          <Layout style={{ backgroundColor: " #0A465A" }}></Layout>
+          <Layout style={{ backgroundColor: " #0A465A" }}>
+            <SiderLayout setSelectedEquipment={setSelectedEquipment} />
+            <ContentLayout selectedEquipment={selectedEquipment} />
+          </Layout>
         </AppContainer>
       </Layout>
     </React.Suspense>
